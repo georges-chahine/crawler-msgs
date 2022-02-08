@@ -1,0 +1,5 @@
+<launch>
+    <node pkg="crawler_msgs" type="crawler_msgs" name="crawler_msgs" output="screen"> 
+ 	<remap from="/texture" to="/bw2_texture/texture" />
+    </node>
+</launch>
