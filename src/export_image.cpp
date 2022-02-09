@@ -1,5 +1,5 @@
 #include <ros/ros.h>
-#include <crawler_msgs/LiveTexture.h>
+#include <live_texture_msgs/LiveTexture.h>
 #include <tf/transform_listener.h>
 #include "nav_msgs/MapMetaData.h"
 #include <sensor_msgs/image_encodings.h>
@@ -28,7 +28,7 @@ protected:
     image_transport::ImageTransport it;
 
 
-    void img_callback(const crawler_msgs::LiveTexture::ConstPtr& msg)
+    void img_callback(const live_texture_msgs::LiveTexture::ConstPtr& msg)
     {
         texturePub.publish(msg->texture);
     }
@@ -45,7 +45,7 @@ public:
         n.param("transport",transport,transport);
 
         texturePub = it.advertise("texture_img", 1);
-        textureSub=n.subscribe<crawler_msgs::LiveTexture>("/texture",1,&Exporter::img_callback,this);
+        textureSub=n.subscribe<live_texture_msgs::LiveTexture>("/texture",1,&Exporter::img_callback,this);
     }
 };
 
